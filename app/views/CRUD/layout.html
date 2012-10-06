@@ -1,0 +1,21 @@
+#{extends 'admin.html' /}
+#{set 'moreStyles'}
+
+#{/set}
+
+#{set 'moreScripts'}
+    <script type="text/javascript" src="@{'/public/ckeditor/ckeditor.js'}"></script>
+#{/set}
+
+
+
+<div id="crud">
+
+    #{crud.title type:type, object:object, error:error/}
+ 
+    <div id="crudContent">
+    	#{doLayout /}
+    </div>
+
+</div>
+

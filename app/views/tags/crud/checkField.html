@@ -1,0 +1,14 @@
+#{field 'object.' + _name}
+<label class="control-label" for="${field.id}">&{_name}</label>
+<div class="controls">
+    <label class="checkbox">
+        <input type="checkbox" name="${field.name}"
+               id="${field.id}" value="true" ${(params[field.name] ? params.getAll(field.name)[0] == 'true' : _value) ? 'checked="true"'.raw() : ''}>
+            #{ifError field.name}
+                ${field.error.raw()}
+            #{/ifError}
+        </input>
+    </label>
+    <input type="hidden" name="${field.name}" value="false"/>
+</div>
+#{/field}

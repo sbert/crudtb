@@ -1,0 +1,21 @@
+#{field 'object.' + _name}
+<label class="control-label" for="${field.id}">&{_name}</label>
+<div class="controls">
+    <div class="input-append date"  name=${field.name}" id="div${field.id}" data-date="${_value?.format()}" data-date-format="${play.libs.I18N.getDateFormat()}">
+        <input id="${field.id}" name="${field.name}" class="span2" readonly
+               #{crud.requiredInput class:_class, name:_name/}
+               size="16" type="text" value="${_value?.format()}"><span class="add-on"><i class="icon-th"></i></span>
+    </div>
+    #{crud.inLineHelpField field:field, class:_class, name:_name /}
+</div>
+#{/field}
+<script type="text/javascript">
+    $(function() {
+        $('#div${field.id}').datepicker({
+            weekStart: 1,
+            autoclose: true,
+            language:  '${lang}'
+        });
+    });
+</script>
+

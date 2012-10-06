@@ -1,0 +1,16 @@
+#{field 'object.' + _name}
+<label class="control-label" for="${field.id}">&{_name}</label>
+<div class="controls">
+    <input id="${field.id}" class="input-file" type="file" name="${field.name}" />
+    #{crud.inLineHelpField field:field, class:_class, name:_name /}
+    #{if _value && _value.exists() && _id}
+    <p class="help-block">
+        <a class="currentAttachment" href="@{attachment(_id, _name)}">Download current file (${_value.length().formatSize()})</a>
+        <br/>
+        <label class="checkbox">
+            <input type="checkbox" name="${field.name}_delete_" value="true" /> (delete)
+        </label>
+    </p>
+    #{/if}
+</div>
+#{/field}

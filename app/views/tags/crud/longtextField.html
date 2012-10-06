@@ -1,0 +1,10 @@
+#{field 'object.' + _name}
+<label class="control-label" for="${field.id}">&{_name}</label>
+<div class="controls">
+    <textarea id="${field.id}" rows="5"
+            #{crud.requiredInput class:_class, name:_name/}
+              class="input-xlarge" name="${field.name}">${params[field.name]?.escape()?.raw() ?: field.error?.message == 'validation.required' ? '' : _value?.escape()?.raw()}</textarea>
+    #{crud.inLineHelpField field:field, class:_class, name:_name /}
+</div>
+#{/field}
+

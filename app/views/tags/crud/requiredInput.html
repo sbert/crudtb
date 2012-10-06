@@ -1,0 +1,5 @@
+%{ play.data.validation.Validation.getValidators(_class, _name, 'object').each() { }%
+    %{if(it.annotation.annotationType().name.substring(21)=="Required") {}%
+        Required="Required"
+    %{}}%
+%{}}%

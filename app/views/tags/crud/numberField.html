@@ -1,0 +1,9 @@
+#{field 'object.' + _name}
+<label class="control-label" for="${field.id}">&{_name}</label>
+<div class="controls">
+    <input type="number" name="${field.name}"
+        #{crud.requiredInput class:_class, name:_name/}
+           class="input-small" id="${field.id}" value="${params[field.name]?.escape()?.raw() ?: field.error?.message == 'validation.required' ? '' : _value?.escape()?.raw()}"/>
+    #{crud.inLineHelpField field:field, class:_class, name:_name /}
+</div>
+#{/field}

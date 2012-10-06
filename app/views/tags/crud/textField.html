@@ -1,0 +1,15 @@
+#{field 'object.' + _name}
+    %{  def type = 'text';
+        play.data.validation.Validation.getValidators(_class, _name, 'object').each() {
+        if(it.annotation.annotationType().name.substring(21)=="Email") {
+            type = 'email';
+        }
+    }}%
+    <label class="control-label" for="${field.id}">&{_name}</label>
+    <div class="controls">
+        <input type="${type}" name="${field.name}"
+                #{crud.requiredInput class:_class, name:_name/}
+               class="input-xlarge" id="${field.id}" value="${params[field.name]?.escape()?.raw() ?: field.error?.message == 'validation.required' ? '' : _value?.escape()?.raw()}"/>
+        #{crud.inLineHelpField field:field, class:_class, name:_name /}
+    </div>
+#{/field}
