@@ -1,10 +1,24 @@
 #{extends 'admin.html' /}
 #{set 'moreStyles'}
-
+    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/bootstrap/css/bootstrap.min.css'}"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/bootstrap/css/bootstrap-responsive.min.css'}"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/datepicker/css/datepicker.css'}"/>
 #{/set}
 
 #{set 'moreScripts'}
+    <script type="text/javascript" src="@{'/public/javascripts/jquery-1.7.2.min.js'}"></script>
+    <script type="text/javascript" src="@{'/public/datepicker/js/bootstrap-datepicker.js'}"></script>
+    <script type="text/javascript" src="@{'/public/datepicker/locales/bootstrap-datepicker.fr.js'}"></script>
     <script type="text/javascript" src="@{'/public/ckeditor/ckeditor.js'}"></script>
+
+    <script type="text/javascript" src="@{'/public/bootstrap/js/bootstrap-dropdown.js'}"></script>
+    <script type="text/javascript" src="@{'/public/bootstrap/js/bootstrap-modal.js'}"></script>
+    <script type="text/javascript" src="@{'/public/bootstrap/js/bootstrap-transition.js'}"></script>
+    <script type="text/javascript" src="@{'/public/bootstrap/js/bootstrap-alert.js'}"></script>
+    <script type="text/javascript" src="@{'/public/bootstrap/js/bootstrap-typeahead.js'}"></script>
+    <script type="text/javascript" src="@{'/public/bootstrap/js/bootstrap-button.js'}"></script>
+    <script type="text/javascript" src="@{'/public/bootstrap/js/bootstrap-tooltip.js'}"></script>
+    <script type="text/javascript" src="@{'/public/bootstrap/js/bootstrap-popover.js'}"></script>
 #{/set}
 
 
