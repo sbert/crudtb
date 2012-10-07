@@ -1,35 +1,75 @@
-#{extends 'admin.html' /}
-#{set 'moreStyles'}
+<!DOCTYPE html>
+
+<html lang="${lang}">
+<head>
+    <title>#{get 'title' /}</title>
+    <meta charset="${_response_encoding}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    #{get 'moreStyles' /}
+    #{get 'moreScripts' /}
+
+    <link rel="shortcut icon" type="/public/images/png"
+          href="@{'/public/images/favicon.png'}" />
+
     <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/bootstrap/css/bootstrap.min.css'}"/>
     <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/bootstrap/css/bootstrap-responsive.min.css'}"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/crud.css'}"/>
     <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/datepicker/css/datepicker.css'}"/>
-#{/set}
 
-#{set 'moreScripts'}
+
+    <!-- these javascript files need to be decalred in the head of the page -->
     <script type="text/javascript" src="@{'/public/javascripts/jquery-1.7.2.min.js'}"></script>
     <script type="text/javascript" src="@{'/public/datepicker/js/bootstrap-datepicker.js'}"></script>
     <script type="text/javascript" src="@{'/public/datepicker/locales/bootstrap-datepicker.fr.js'}"></script>
-    <script type="text/javascript" src="@{'/public/ckeditor/ckeditor.js'}"></script>
 
-    <script type="text/javascript" src="@{'/public/bootstrap/js/bootstrap-dropdown.js'}"></script>
-    <script type="text/javascript" src="@{'/public/bootstrap/js/bootstrap-modal.js'}"></script>
-    <script type="text/javascript" src="@{'/public/bootstrap/js/bootstrap-transition.js'}"></script>
-    <script type="text/javascript" src="@{'/public/bootstrap/js/bootstrap-alert.js'}"></script>
-    <script type="text/javascript" src="@{'/public/bootstrap/js/bootstrap-typeahead.js'}"></script>
-    <script type="text/javascript" src="@{'/public/bootstrap/js/bootstrap-button.js'}"></script>
-    <script type="text/javascript" src="@{'/public/bootstrap/js/bootstrap-tooltip.js'}"></script>
-    <script type="text/javascript" src="@{'/public/bootstrap/js/bootstrap-popover.js'}"></script>
-#{/set}
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+    </style>
 
 
+</head>
+<body>
+#{include 'crudtb/navbar.html'/}
+#{include 'crudtb/crudNavbar.html'/}
 
-<div id="crud">
+<div class="container" style="margin-top: 20px">
+
+    <div id="crud">
 
     #{crud.title type:type, object:object, error:error/}
- 
-    <div id="crudContent">
-    	#{doLayout /}
+
+        <div id="crudContent">
+        #{doLayout /}
+        </div>
+
     </div>
 
+    <hr>
+
+    <footer>
+        <p>&copy; Company 2012</p>
+    </footer>
+
 </div>
+
+<script type="text/javascript" src="@{'/public/bootstrap/js/bootstrap-dropdown.js'}"></script>
+<script type="text/javascript" src="@{'/public/bootstrap/js/bootstrap-modal.js'}"></script>
+<script type="text/javascript" src="@{'/public/bootstrap/js/bootstrap-transition.js'}"></script>
+<script type="text/javascript" src="@{'/public/bootstrap/js/bootstrap-alert.js'}"></script>
+<script type="text/javascript" src="@{'/public/bootstrap/js/bootstrap-typeahead.js'}"></script>
+<script type="text/javascript" src="@{'/public/bootstrap/js/bootstrap-button.js'}"></script>
+<script type="text/javascript" src="@{'/public/bootstrap/js/bootstrap-tooltip.js'}"></script>
+<script type="text/javascript" src="@{'/public/bootstrap/js/bootstrap-popover.js'}"></script>
+*{<script type="text/javascript" src="@{'/public/javascripts/application.js'}"></script>}*
+
+</body>
+
+</html>
+
+
+
 

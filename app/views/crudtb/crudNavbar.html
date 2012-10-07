@@ -1,0 +1,10 @@
+<div class="subnav subnav-fixed">
+    <ul class="nav nav-pills">
+        <li class="${request.action == 'Admin.index' ? 'active' : ''}">
+            <a style="color: black" href=@{CRUD.index}><i class="icon-home"></i> Home</a>
+        </li>
+        #{crud.types}
+            #{crud.crudMenuLinkDisplay  actionName:type.name/}
+        #{/crud.types}
+    </ul>
+</div>
