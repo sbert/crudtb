@@ -1,0 +1,8 @@
+#{extends 'CRUD/layout.html' /}
+#{set title:messages.get('crud.title') /}
+
+#{crud.title type:type, object:object, error:error/}
+
+<div id="crudContent">
+    #{doLayout /}
+</div>
