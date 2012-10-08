@@ -1,6 +1,6 @@
 <div class="subnav subnav-fixed">
     <ul class="nav nav-pills">
-        <li class="${request.action == 'Admin.index' ? 'active' : ''}">
+        <li class="${request.actionMethod == 'index' ? 'active' : ''}">
             <a style="color: black" href=@{CRUD.index}><i class="icon-home"></i> Home</a>
         </li>
         #{crud.types}
