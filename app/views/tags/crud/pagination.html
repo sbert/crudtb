@@ -33,6 +33,14 @@
                 </li>
             #{/else}
 
+            #{a @list().add('page', 1).add('search', _caller.params.search).add('orderBy', _caller.orderBy).add('order', _caller.order)}1#{/a}
+            #{if _caller.page > 4 }
+
+            #{/if}
+            #{else }
+
+            #{/else}
+
             #{if start > 1}
                 <li>
                     #{a @list().add('page', 1).add('search', _caller.params.search).add('orderBy', _caller.orderBy).add('order', _caller.order)}&{'crud.pagination.first'}#{/a}
@@ -59,6 +67,18 @@
             #{else}
                 <li class="disabled">
                     <a>&{'crud.pagination.last'}</a>
+                </li>
+            #{/else}
+
+
+            #{if _caller.page != nbPages}
+                <li>
+                    #{a @list().add('page', nbPages).add('search', _caller.params.search).add('orderBy', _caller.orderBy).add('order', _caller.order)}${nbPages}#{/a}
+                </li>
+            #{/if}
+            #{else}
+                <li class="disabled">
+                    <a>&{nbPages}</a>
                 </li>
             #{/else}
 
