@@ -1,99 +1,90 @@
 %{ nbPages = _caller.count.page(controllers.CRUD.getPageSize()) }%
 
-<p class="crudCount">
-    &{'crud.list.size', _caller.count, typeDisplayName ?: _caller.type.name}
-</p>
-
 #{if nbPages > 1}
-    <div class="pagination">
-        <ul>
-        %{
-            limit = (_limit != null ? _limit : 10)
-            start = _caller.page - (int)(limit/2) + (limit % 2 ? 0 : 1)
-            end = _caller.page + (int)(limit/2)
+    <div class="row">
+        <div class="span3" style="margin-top: 10px;">
+#{/if}
+        <span class="label">
+            &{'crud.list.size', _caller.count, typeDisplayName ?: _caller.type.name}
 
-            if(start < 1){
-            extra = 1 - start
-            end = (end + extra < nbPages ? end + extra : nbPages)
-            start = 1
-            }else if(end > nbPages){
-            extra = end - nbPages
-            start = (start - extra > 1 ? start - extra : 1)
-            end = nbPages
-            }
-            }%
-            #{if _caller.page > 1}
-                <li>
-                    #{a @list().add('page', _caller.page-1).add('search', _caller.params.search).add('orderBy', _caller.orderBy).add('order', _caller.order)}&{'crud.pagination.previous'}#{/a}
-                </li>
-            #{/if}
-            #{else }
-                <li class="disabled">
-                    <a>&{'crud.pagination.previous'}</a>
-                </li>
-            #{/else}
+        </span>
+#{if nbPages > 1}
+        </div>
+        <div class="span6">
+            <div class="pagination pagination-centered" style="margin-top: 0px;">
+                <ul>
+                %{
+                    limit = (_limit != null ? _limit : 10)
+                    start = _caller.page - (int)(limit/2) + (limit % 2 ? 0 : 1)
+                    end = _caller.page + (int)(limit/2)
 
-            #{a @list().add('page', 1).add('search', _caller.params.search).add('orderBy', _caller.orderBy).add('order', _caller.order)}1#{/a}
-            #{if _caller.page > 4 }
+                    if(start < 1){
+                    extra = 1 - start
+                    end = (end + extra < nbPages ? end + extra : nbPages)
+                    start = 1
+                    }else if(end > nbPages){
+                    extra = end - nbPages
+                    start = (start - extra > 1 ? start - extra : 1)
+                    end = nbPages
+                    }
+                    }%
+                    #{if _caller.page > 1}
+                        <li>
+                            #{a @list().add('page', _caller.page-1).add('search', _caller.params.search).add('orderBy', _caller.orderBy).add('order', _caller.order)}&{'crud.pagination.previous'}#{/a}
+                        </li>
+                    #{/if}
+                    #{else }
+                        <li class="disabled">
+                            <a>&{'crud.pagination.previous'}</a>
+                        </li>
+                    #{/else}
 
-            #{/if}
-            #{else }
+                    <li #{if _caller.page == 1}class="active"#{/if}>
+                        #{a @list().add('page', 1).add('search', _caller.params.search).add('orderBy', _caller.orderBy).add('order', _caller.order)}#{if nbPages>9}&nbsp;#{/if}1#{/a}
+                    </li>
 
-            #{/else}
+                %{
+                    if(nbPages > 3) {
+                    for (i in (start+1)..(end-1)) { }%
+                    #{if nbPages > 9 && i==start+1 && _caller.page > 4}
+                        <li class="disabled">
+                            <a>...</a>
+                        </li>
+                    #{/if}
+                    #{elseif nbPages > 9 && i==end-1 && _caller.page < nbPages -4}
+                        <li class="disabled">
+                            <a>...</a>
+                        </li>
+                    #{/elseif}
+                    #{else }
+                        <li #{if _caller.page == i}class="active"#{/if}  style="width: 25px">
+                            #{a @list().add('page', i).add('search', _caller.params.search).add('orderBy', _caller.orderBy).add('order', _caller.order)}#{if nbPages>9 && i<10}&nbsp;#{/if}${i}#{/a}
+                        </li>
+                    #{/else}
 
-            #{if start > 1}
-                <li>
-                    #{a @list().add('page', 1).add('search', _caller.params.search).add('orderBy', _caller.orderBy).add('order', _caller.order)}&{'crud.pagination.first'}#{/a}
-                </li>
-            #{/if}
-            #{else}
-                <li class="disabled">
-                    <a>&{'crud.pagination.first'}</a>
-                </li>
-            #{/else}
+                %{      }
+                    }}%
 
+                    <li #{if _caller.page == nbPages}class="active"#{/if}>
+                        #{a @list().add('page', nbPages).add('search', _caller.params.search).add('orderBy', _caller.orderBy).add('order', _caller.order)}${nbPages}#{/a}
+                    </li>
 
-            %{ for (i in start..end) { }%
-                <li #{if _caller.page == i}class="active"#{/if}>
-                    #{a @list().add('page', i).add('search', _caller.params.search).add('orderBy', _caller.orderBy).add('order', _caller.order)}${i}#{/a}
-                </li>
-            %{ } }%
-
-            #{if end < nbPages}
-                <li>
-                    #{a @list().add('page', nbPages).add('search', _caller.params.search).add('orderBy', _caller.orderBy).add('order', _caller.order)}&{'crud.pagination.last'}#{/a}
-                </li>
-            #{/if}
-            #{else}
-                <li class="disabled">
-                    <a>&{'crud.pagination.last'}</a>
-                </li>
-            #{/else}
-
-
-            #{if _caller.page != nbPages}
-                <li>
-                    #{a @list().add('page', nbPages).add('search', _caller.params.search).add('orderBy', _caller.orderBy).add('order', _caller.order)}${nbPages}#{/a}
-                </li>
-            #{/if}
-            #{else}
-                <li class="disabled">
-                    <a>&{nbPages}</a>
-                </li>
-            #{/else}
-
-            #{if _caller.page < nbPages}
-                <li>
-                    #{a @list().add('page', _caller.page+1).add('search', _caller.params.search).add('orderBy', _caller.orderBy).add('order', _caller.order)}&{'crud.pagination.next'}#{/a}
-                </li>
-            #{/if}
-            #{else}
-                <li class="disabled">
-                    <a>&{'crud.pagination.next'}</a>
-                </li>
-            #{/else}
+                    #{if _caller.page < nbPages}
+                        <li>
+                            #{a @list().add('page', _caller.page+1).add('search', _caller.params.search).add('orderBy', _caller.orderBy).add('order', _caller.order)}&{'crud.pagination.next'}#{/a}
+                        </li>
+                    #{/if}
+                    #{else}
+                        <li class="disabled">
+                            <a>&{'crud.pagination.next'}</a>
+                        </li>
+                    #{/else}
 
 
-        </ul>
+                </ul>
+            </div>
+
+        </div>
     </div>
+
 #{/if}
