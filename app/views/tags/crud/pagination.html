@@ -11,8 +11,8 @@
 #{if nbPages > 1}
         </div>
         <div class="span6">
-            <div class="pagination pagination-centered" style="margin-top: 0px;">
-                <ul>
+            <div style="margin-top: 0px;">
+                <ul class="pagination">
                 %{
                     limit = (_limit != null ? _limit : 10)
                     start = _caller.page - (int)(limit/2) + (limit % 2 ? 0 : 1)
