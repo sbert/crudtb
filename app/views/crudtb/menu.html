@@ -1,0 +1,10 @@
+<div data-spy="affix">
+    <div class="bs-sidebar">
+        <ul class="nav bs-sidenav">
+            <li class="${request.actionMethod == 'index' ? 'active' : ''}"><a href="@{CRUD.index}"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a></li>
+            #{crud.types}
+            #{crud.crudMenuLinkDisplay  actionName:type.name/}
+            #{/crud.types}
+        </ul>
+    </div>
+</div>
