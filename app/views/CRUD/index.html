@@ -20,12 +20,11 @@
                             <a href="${type.listAction}">&{type.name}</a>
                         </div>
                     </td>
-                    <td class="crudNew" >
-                        <a class="btn btn-success" href="${type.blankAction}"><i class="icon-plus icon-white"></i> &{'crud.index.add', type}</a>
+                    <td class="crudNew" style="text-align: center">
+                        <a class="btn btn-success btn-sm" href="${type.blankAction}"><span class="glyphicon glyphicon-plus"></span> &{'crud.index.add', type}</a>
                     </td>
                 </tr>
             #{/crud.types}
         </tbody>
     </table>
-
 </div>
