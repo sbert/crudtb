@@ -1,6 +1,25 @@
 /* Add additional stylesheets below
 -------------------------------------------------- */
 
+
+/* Title row
+-------------------------------------------------- */
+
+.row-crud-title a, button {
+    margin-top: 8px;
+}
+
+.row-crud-title div {
+    height: 50px;
+    vertical-align: middle;
+}
+
+.row-crud-title h1 {
+    margin-top: 0px;
+}
+
+
+
 /* Docs sidebar
 -------------------------------------------------- */
 

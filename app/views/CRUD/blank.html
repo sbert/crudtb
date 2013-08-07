@@ -2,9 +2,9 @@
 
 #{form action:@create(), enctype:'multipart/form-data', class:'form form-horizontal'}
     #{crud.form /}
-<div class="form-actions">
-    <button class="btn" type="submit" name="_save" value="">&{'crud.save', type.modelName}</button>
-    <button  class="btn" type="submit" name="_saveAndContinue" >&{'crud.saveAndContinue', type.modelName}</button>
-    <button  class="btn" type="submit" name="_saveAndAddAnother" >&{'crud.saveAndAddAnother', type.modelName}</button>
-</div>
+    <div class="form-actions">
+        <button class="btn" type="submit" name="_save" value="">&{'crud.save', type.modelName}</button>
+        <button  class="btn" type="submit" name="_saveAndContinue" >&{'crud.saveAndContinue', type.modelName}</button>
+        <button  class="btn" type="submit" name="_saveAndAddAnother" >&{'crud.saveAndAddAnother', type.modelName}</button>
+    </div>
 #{/form}

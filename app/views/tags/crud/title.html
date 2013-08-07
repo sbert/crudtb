@@ -1,30 +1,30 @@
 <div class="page-header">
     #{if request.actionMethod == 'list'}
         #{set title:messages.get('crud.list.title', typeDisplayNamePluralize ?: _type.name) /}
-        <div class="row-fluid">
-            <div class="span3">
+        <div class="row row-crud-title">
+            <div class="col-lg-3">
                 <h1>&{'crud.list.title', typeDisplayNamePluralize ?: _type.name}&nbsp;</h1>
             </div>
-            <div class="span6  #{if flash.success}alert alert-success#{/if} #{elseif flash.error || error} alert alert-error#{/elseif}" style="margin-bottom: 0px">
+            <div class="col-lg-6 #{if flash.success}alert alert-success#{/if} #{elseif flash.error || error} alert alert-error#{/elseif}">
                 #{if flash.success}
-                            <strong>Well Done!</strong> ${flash.success}
+                <strong>Well Done!</strong> ${flash.success}
                 #{/if}
                 #{elseif flash.error || _error}
-                    <strong>Oh snap!</strong> ${_error ?: flash.error}
+                <strong>Oh snap!</strong> ${_error ?: flash.error}
                 #{/elseif}
             </div>
-            <div class="span3">
-                <a class="btn btn-success pull-right" href="@{blank()}"><i class="icon-plus icon-white"></i> &{'crud.add', typeDisplayName ?: _type.modelName}</a>
+            <div class="col-lg-3">
+                <a class="btn btn-success pull-right" href="@{blank()}"><span class="glyphicon glyphicon-plus"></span> &{'crud.add', typeDisplayName ?: _type.modelName}</a>
             </div>
         </div>
     #{/if}
     #{elseif request.actionMethod == 'show' || request.actionMethod == 'save' }
         #{set title:messages.get('crud.show.title', typeDisplayName ?: _type.modelName) /}
-        <div class="row-fluid">
-            <div class="span3">
+        <div class="row row-crud-title">
+            <div class="col-lg-3">
                 <h1>&{'crud.show.title', typeDisplayName ?: _type.modelName}&nbsp;</h1>
             </div>
-            <div class="span6  #{if flash.success}alert alert-success#{/if} #{elseif flash.error || _error} alert alert-error#{/elseif}" style="margin-bottom: 0px">
+            <div class="col-lg-6 #{if flash.success}alert alert-success#{/if} #{elseif flash.error || _error} alert alert-error#{/elseif}">
                 #{if flash.success}
                     <strong>Well Done!</strong> ${flash.success}
                 #{/if}
@@ -32,25 +32,25 @@
                     <strong>Oh snap!</strong> ${_error ?: flash.error}
                 #{/elseif}
             </div>
-            <div class="span3">
+            <div class="col-lg-3">
                 #{if !protectionDelete}
                     #{form @delete(_object._key()), class:'inline pull-right', style: 'margin-bottom: 0px'}
-                        <button class="btn btn-danger pull-right" type="submit"><i class="icon-trash icon-white"></i> &{'crud.delete', typeDisplayName ?: _type.modelName}</button>
+                        <button class="btn btn-danger pull-right" type="submit"><span class="glyphicon glyphicon-trash"></span> &{'crud.delete', typeDisplayName ?: _type.modelName}</button>
                     #{/form}
                 #{/if}
                 #{else}
-                    <a class="btn btn-primary pull-right" href="@{list()}"><i class="icon-ban-circle icon-white"></i> Cancel</a>
+                    <a class="btn btn-primary pull-right" href="@{list()}"><span class="glyphicon glyphicon-ban-circle"></span> Cancel</a>
                 #{/else}
             </div>
         </div>
     #{/elseif}
     #{elseif request.actionMethod == 'create' || request.actionMethod == 'blank'}
         #{set title:messages.get('crud.blank.title', typeDisplayName ?: _type.modelName) /}
-        <div class="row-fluid">
-            <div class="span3">
+        <div class="row row-crud-title">
+            <div class="col-lg-3">
                 <h1>&{'crud.blank.title', typeDisplayName ?: _type.modelName}&nbsp;</h1>
             </div>
-            <div class="span6  #{if flash.success}alert alert-success#{/if} #{elseif flash.error || _error} alert alert-error#{/elseif}" style="margin-bottom: 0px">
+            <div class="col-lg-6 #{if flash.success}alert alert-success#{/if} #{elseif flash.error || _error} alert alert-error#{/elseif}">
                 #{if flash.success}
                     <strong>Well Done!</strong> ${flash.success}
                 #{/if}
@@ -58,8 +58,8 @@
                     <strong>Oh snap!</strong> ${_error ?: flash.error}
                 #{/elseif}
             </div>
-            <div class="span3">
-                <a class="btn btn-primary pull-right" href="@{list()}"><i class="icon-ban-circle icon-white"></i> Cancel</a>
+            <div class="col-lg-3">
+                <a class="btn btn-primary pull-right" href="@{list()}"><span class="glyphicon glyphicon-ban-circle"></span> Cancel</a>
             </div>
         </div>
     #{/elseif}
