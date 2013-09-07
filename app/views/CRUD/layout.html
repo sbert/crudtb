@@ -2,9 +2,10 @@
 
 <html lang="${lang}">
 <head>
-    <title>#{get 'title' /}</title>
     <meta charset="${_response_encoding}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>#{get 'title' /}</title>
 
     #{get 'moreStyles' /}
     #{get 'moreScripts' /}
@@ -13,8 +14,8 @@
           href="@{'/public/images/favicon.png'}" />
 
     <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/bootstrap/css/bootstrap.min.css'}"/>
-    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/bootstrap/css/bootstrap-glyphicons.css'}"/>
-    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/crud.css'}"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/doc.css'}"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/crudtb.css'}"/>
     <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/datepicker/css/datepicker.css'}"/>
 
     <!-- these javascript files need to be decalred in the head of the page -->
@@ -22,38 +23,37 @@
     <script type="text/javascript" src="@{'/public/datepicker/js/bootstrap-datepicker.js'}"></script>
     <script type="text/javascript" src="@{'/public/datepicker/locales/bootstrap-datepicker.fr.js'}"></script>
 
-    <style type="text/css">
-        body {
-            padding-top: 60px;
-            padding-bottom: 40px;
-        }
-    </style>
-
 
 </head>
 <body>
 
 #{include 'crudtb/navbar.html'/}
 
-<div class="container">
+<div class="bs-header" id="content">
+    <div class="container">
+        <h1>CSS</h1>
+        <p>Global CSS settings, fundamental HTML elements styled and enhanced with extensible classes, and an advanced grid system.</p>
+        <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script>var z = document.createElement("script"); z.async = true; z.src = "http://engine.carbonads.com/z/32341/azcarbon_2_1_0_HORIZ"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script></div></div>
 
-    <div id="crud">
-        <div class="row">
-            <div class="col-lg-3">
-                #{include 'crudtb/menu.html'/}
-            </div>
-            <div class="col-lg-9">
-                #{doLayout /}
-            </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            #{include 'crudtb/menu.html'/}
+        </div>
+        <div class="col-md-9" role="main">
+            #{doLayout /}
         </div>
     </div>
-
-    <hr>
 </div>
 
 #{include 'crudtb/footer.html'/}
 
 <script type="text/javascript" src="@{'/public/bootstrap/js/bootstrap.min.js'}"></script>
+<script type="text/javascript" src="@{'/public/javascripts/application.js'}"></script>
 
 </body>
 
