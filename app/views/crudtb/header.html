@@ -16,12 +16,11 @@
             #{/else}
         </h1>
         <!--<p>Global CSS settings, fundamental HTML elements styled and enhanced with extensible classes, and an advanced grid system.</p>-->
-        <!--<div id="carbonads-container">-->
-            <!--<div class="carbonad">-->
-                <!--<div id="azcarbon"></div>-->
-                <!--<script>var z = document.createElement("script"); z.async = true; z.src = "http://engine.carbonads.com/z/32341/azcarbon_2_1_0_HORIZ"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>-->
-            <!--</div>-->
-        <!--</div>-->
+        <div id="carbonads-container">
+            <div class="carbonad">
+                <a class="btn btn-success" href="@{blank()}"><span class="glyphicon glyphicon-plus"></span> &{'crud.add', typeDisplayName ?: type.modelName}</a>
+            </div>
+        </div>
 
     </div>
 </div>
