@@ -1,0 +1,15 @@
+
+#{if flash.success}
+<div id="alert_container-success" class="alert alert-success alert-dismissable">
+    <div class="container">
+        <strong>Well Done!</strong> ${flash.success}
+    </div>
+</div>
+#{/if}
+#{elseif flash.error || error}
+<div id="alert_container-error" class="alert alert-danger alert-dismissable">
+    <div class="container">
+        <strong>Oh snap!</strong> ${error ?: flash.error}
+    </div>
+</div>
+#{/elseif}
